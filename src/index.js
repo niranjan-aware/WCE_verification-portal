@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require("path")
 const hbs = require("hbs")
-
+const blockChainSchema = require('../blockchain/blkSchema')
 const { Blockchain } = require('../blockchain/createBlockchain')
 const { Block } = require('../blockchain/createBlockchain')
 
@@ -21,6 +21,7 @@ const { Console } = require('console')
 const app = express();
 const port = process.env.PORT || 3000;
 const { urlencoded, query } = require("express");
+const { checkPrime } = require('crypto')
 const view_path = path.join(__dirname, "../views");
 // const partial_path = path.join(__dirname, "../mernbackend/templates/patials");
 app.use(express.json());
@@ -34,29 +35,26 @@ app.set("views", view_path);
 app.get('/', function (req, res, next) {
 	res.render("home")
 })
-let grade;
-let fname;
-let mname;
-let lname;
 app.post('/logincheck', function (req, res, next) {
-	//console.log("request reached",req)
-	ContactData.findOne({ email: req.body.email }, function (err, data) {
-		grade = JSON.stringify(data.grade);
-		fname = JSON.stringify(data.firstName);
-		mname = JSON.stringify(data.middleName);
-		lname = JSON.stringify(data.lastName);
+	console.log("request reached",req.body)
+	ContactData.findOne({ email: req.body.gemail }, function (err, data) {
+	
 		// console.log(avilableCertificatesData)
 		//console.log(avilableCertificatesData)
 		if (data) {
 
 			if (data.password == req.body.password && data.firstName == req.body.fname && data.adharNumber == req.body.id) {
-
+                let Coin = new Blockchain();
+				Coin.addBlock(new Block("", data.firstName, data.adharNumber))
+				blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
+                      console.log(d)
+				})
+			
 				res.render("select", { name: data })
 				app.get('/certificate', function (req, res) {
 					res.render("certificate", { name: data });
 				});
-				let Coin = new Blockchain();
-				Coin.addBlock(new Block("", data.firstName, data.adharNumber))
+				
 				// console.log(JSON.stringify(Coin, null, 4))
 
 
@@ -71,25 +69,72 @@ app.post('/logincheck', function (req, res, next) {
 	});
 });
 
-
 app.get('/login', function (req, res) {
 	res.render('login');
 });
 
-app.get('/hash', function (req, res) {
-	res.render('hash');
-});
-
-
-app.get('/Verified', function (req, res) {
-	res.render('Verified');
-});
 
 
 
-// app.get('/', (request, response) => {
-//     response.render('login');
+
+
+
+
+
+// app.get('/hash', function (req, res) {
+// 	res.render('hash');
 // });
+
+
+// app.get('/Verified', function (req, res) {
+// 	res.render('Verified');
+// });
+
+
+
+
+// app.post('/hash', function (req, res) {
+// 	// res.render('hash');
+// 	// console.log("request========",req.body)
+// 	// blockChainSchema.findOne({firstName:req.body.fname},function(err,data){
+// 	// 	if(data){
+// 	// 		console.log(data)
+// 	// 		app.post('/verified', function (req, res) {
+// 	// 			res.render('Verified');
+// 	// 		});
+// 	// 	}
+// 	// })
+// 	app.post('/verified', function (req, res) {
+// 		res.render('Verified');
+// 	});
+	
+// });
+
+
+
+app.use(bodyParser.json());
+// app.post('/hash', function (req, res, next) {
+
+// 	console.log("request reached",req.body)
+	
+// 	});
+
+
+app.post('/hash', (req, res) => {
+    res.render('hash');
+	app.post('/Verified', function (req, res) {
+		console.log("request========",req.body)
+		blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
+			console.log(d)
+			if(d){
+				if(d.firstName==req.body.fname&&d.currentHash==req.body.currentHash&&d.adharNumber==req.body.adharNumber){
+					res.render('Verified');
+				}
+			}
+	  })
+				
+			});
+});
 
 app.listen(port, () => {
 	console.log(path.join(__dirname, "../mernbackend/public"));
