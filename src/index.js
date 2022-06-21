@@ -46,8 +46,9 @@ app.post('/logincheck', function (req, res, next) {
 			if (data.password == req.body.password && data.firstName == req.body.fname && data.adharNumber == req.body.id) {
 				let Coin = new Blockchain();
 				Coin.addBlock(new Block("", data.firstName, data.adharNumber))
+				console.log(JSON.stringify(Coin))
 				blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
-					console.log(data)
+					console.log(d)
 					if (d) {
 						res.render("select", { name: data },)
 						app.get('/certificate', function (req, res) {
