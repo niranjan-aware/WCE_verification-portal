@@ -1,0 +1,122 @@
+<html>
+  <nav class="navbar navbar-expand-lg bg-light">
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">WCE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <form action="/">
+            <button class="btn btn-outline-success" type="submit">Home</button>
+        </form>
+          </li>
+        </ul>
+        <form class="d-flex" role="login">
+          <!-- <button class="btn btn-outline-success" type="submit">Login</button> -->
+        </form>
+      </div>
+    </div>
+</nav>
+<head>
+  <title>Cerificate</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>  
+<style type="text/css">
+  p,h3,h2,h4,h5,h1{
+  font-family: 'Bitter', serif;
+  
+}
+input{
+  border: 2px solid #2C3E50;
+  padding: 10px;
+    border-radius: 20px;
+  text-decoration: none;
+  width:150px;
+  color: inherit;
+  background-color: rgb(238, 129, 129);
+   outline: none;
+}
+</style>
+</head>
+
+<body style="background-color: rgb(185, 178, 236)">
+  <div class="container" style="border: 6px solid #1a0902; padding: 13%;text-align: center;background-color:white;margin-top: 5%;border-radius: 16px">
+    <h1 style="font-size: 40px; color: #01121a">!Congratulation!</h1>
+    <h1 style="font-size: 50px; color: #01121a">Certificate Of Graduation</h1>
+    <!-- <i class="fa fa-certificate" style="font-size: 150px;color: #1b0b04"></i> -->
+    <h2 style="font-size: 40px; text-transform: uppercase;">Name: {{this.name.firstName}} {{this.name.middleName}} {{this.name.lastName}}</h2>
+    <h2 style="font-size: 40px; text-transform: uppercase;">Passing Year:{{this.name.year_of_passing}}</h2>
+    <h2 style="font-size: 30px"> Grade: {{this.name.grade}}</h2>
+    <h3>has completed Graduation from walchand college of Enginearing Of sangli.</h3>
+  </div>
+
+<br>
+<br>
+<center><input type="button" id="create_pdf" value="Generate PDF"></center>
+{{!-- <script type="text/javascript">
+  var rname = localStorage.getItem("name");
+  var rage = localStorage.getItem("age");
+    console.log("zfzfggcvhbjnkmllkjhgfdxfcvgbhnjmklghf");
+    console.log(rname);
+    document.getElementById('dname').innerHTML = rname;
+    document.getElementById('dage').innerHTML = rage;
+</script> --}}
+<script>  
+    (function () {  
+        var  
+         form = $('.container'),  
+         cache_width = 700, //form.width(),  
+         a4 = [400,600]; // for a4 size paper width and height  
+  
+        $('#create_pdf').on('click', function () {  
+            $('body').scrollTop(0);  
+            createPDF();  
+        });  
+        //create pdf  s
+        function createPDF() {  
+            getCanvas().then(function (canvas) {  
+                var  
+                 img = canvas.toDataURL("image/png"),  
+                 doc = new jsPDF({  
+                     unit: 'px',  
+                     format: 'a4'  
+                 });  
+                doc.addImage(img, 'JPEG', 1.2, 1);  
+                doc.save('certificate-creation.pdf');  
+                form.width(cache_width);  
+            });  
+        }  
+  
+        // create canvas object  
+        function getCanvas() {  
+            form.width((a4[0] * 1.33333) - 60).css('max-width', 'none');  
+            return html2canvas(form, {  
+                imageTimeout: 2000,  
+                removeContainer: true  
+            });  
+        }  
+  
+    }()); 
+
+
+</script> 
+</body>
+</html>   
+ 
