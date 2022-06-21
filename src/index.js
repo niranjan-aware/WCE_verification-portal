@@ -36,25 +36,32 @@ app.get('/', function (req, res, next) {
 	res.render("home")
 })
 app.post('/logincheck', function (req, res, next) {
-	console.log("request reached",req.body)
+	console.log("request reached", req.body)
 	ContactData.findOne({ email: req.body.gemail }, function (err, data) {
-	
+
 		// console.log(avilableCertificatesData)
 		//console.log(avilableCertificatesData)
 		if (data) {
 
 			if (data.password == req.body.password && data.firstName == req.body.fname && data.adharNumber == req.body.id) {
-                let Coin = new Blockchain();
+				let Coin = new Blockchain();
 				Coin.addBlock(new Block("", data.firstName, data.adharNumber))
 				blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
-                      console.log(d)
+					console.log(data)
+					if (d) {
+						res.render("select", { name: data },)
+						app.get('/certificate', function (req, res) {
+							res.render("certificate", { name: data });
+						});
+
+					}
 				})
-			
-				res.render("select", { name: data })
-				app.get('/certificate', function (req, res) {
-					res.render("certificate", { name: data });
-				});
-				
+
+				// res.render("select", { name: data })
+				// app.get('/certificate', function (req, res) {
+				// 	res.render("certificate", { name: data });
+				// });
+
 				// console.log(JSON.stringify(Coin, null, 4))
 
 
@@ -107,7 +114,7 @@ app.get('/login', function (req, res) {
 // 	app.post('/verified', function (req, res) {
 // 		res.render('Verified');
 // 	});
-	
+
 // });
 
 
@@ -116,24 +123,24 @@ app.use(bodyParser.json());
 // app.post('/hash', function (req, res, next) {
 
 // 	console.log("request reached",req.body)
-	
+
 // 	});
 
 
 app.post('/hash', (req, res) => {
-    res.render('hash');
+	res.render('hash');
 	app.post('/Verified', function (req, res) {
-		console.log("request========",req.body)
+		console.log("request========", req.body)
 		blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
 			console.log(d)
-			if(d){
-				if(d.firstName==req.body.fname&&d.currentHash==req.body.currentHash&&d.adharNumber==req.body.adharNumber){
-					res.render('Verified');
+			if (d) {
+				if (d.firstName == req.body.fname && d.currentHash == req.body.currentHash && d.adharNumber == req.body.adharNumber) {
+					res.render('Verified', { name: d });
 				}
 			}
-	  })
-				
-			});
+		})
+
+	});
 });
 
 app.listen(port, () => {

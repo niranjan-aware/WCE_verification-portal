@@ -203,19 +203,21 @@ body {
 		<div class="screen__content">
 			<form class="login">
                 
-                <h1>Certificate is Varified</h1>
+                <h2>Certificate is Verified</h2>
 
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="Candidate Name" required>
+					{{!-- <input type="text" class="login__input" > --}}
+					<h5 style="font-family: serif;"> Candidate Name : {{this.name.firstName}} </h5>
 				</div>
 				 <div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="Unique ID" required>
+					<h5 style="font-family: serif;"> Adhaar Number :  </h5>
+					<h5>{{this.name.adharNumber}}</h5>
 				</div>
                 <div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="Unique ID" required>
+				<h5 style="font-family:Georgia, serif;"> Hash-Id Of Certificate : {{this.name.currentHash}} </h5>
 				</div>
                 <!-- <div class="login__field">
 					<i class="login__icon fas fa-user"></i>
