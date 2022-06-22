@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ContactData = require('../../clgDataMogo/addUserDataSchema')
+var ContactData = require('../clgDataMogo/addUserDataSchema')
 
 
 router.get('/userAvailableDcos:adharNumber', function (req, res, next) {

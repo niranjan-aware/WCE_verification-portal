@@ -9,7 +9,7 @@ const { Block } = require('../blockchain/createBlockchain')
 // require('./db/mongoose')
 // require('../clgDataMogo/mongoose')
 require('../clgDataMogo/mongoose')
-const dataRouter = require('./routes/userSignIn')
+// const dataRouter = require('./routes/userSignIn')
 // const loginValidationRouter=require('./routes/userLoginRoute')
 // const loginValidationRouter=require('./routes/checkUserLogin')
 // const userDetailRoute=require('./routes/userLoginRoute')
@@ -61,11 +61,21 @@ app.post('/logincheck', function (req, res, next) {
 						res.render("select", { name: data })
 						app.get('/certificate', function (req, res) {
 							res.render("certificate", { name: data,z:d });
+							
 						});
 
 					}
 				})
-
+				// app.get('/account', function (req, res) {
+	
+				// 	ContactData.findOne({email: req.body.gemail}, function (err, data) {
+				// 		if(data){
+				// 			console.log(data)
+				// 			res.render('account',{name:data});         
+				// 		}
+				// 	})
+					
+				// });
 				// res.render("select", { name: data })
 				// app.get('/certificate', function (req, res) {
 				// 	res.render("certificate", { name: data });
@@ -83,6 +93,9 @@ app.post('/logincheck', function (req, res, next) {
 		}
 
 	});
+	
+
+
 });
 
 module.exports = {
@@ -102,9 +115,9 @@ app.get('/login', function (req, res) {
 
 
 
-// app.get('/hash', function (req, res) {
-// 	res.render('hash');
-// });
+
+
+
 
 
 // app.get('/Verified', function (req, res) {
@@ -149,7 +162,12 @@ app.post('/hash', (req, res) => {
 			console.log(d)
 			if (d) {
 				if (d.firstName == req.body.fname && d.currentHash == req.body.currentHash && d.adharNumber == req.body.adharNumber) {
-					res.render('Verified', { name: d });
+					ContactData.findOne({ firstName: req.body.fname }, function (err, data) {
+						if(data){
+							res.render('Verified', { name: d ,z:data});
+						}
+					})
+					
 				}
 			}
 		})
