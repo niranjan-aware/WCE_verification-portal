@@ -35,6 +35,7 @@ app.set("views", view_path);
 app.get('/', function (req, res, next) {
 	res.render("home")
 })
+let FOO
 app.post('/logincheck', function (req, res, next) {
 	console.log("request reached", req.body)
 	ContactData.findOne({ email: req.body.gemail }, function (err, data) {
@@ -49,10 +50,11 @@ app.post('/logincheck', function (req, res, next) {
 				console.log(JSON.stringify(Coin))
 				blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
 					console.log(d)
+					let FOO = 5;
 					if (d) {
-						res.render("select", { name: data },)
+						res.render("select", { name: data })
 						app.get('/certificate', function (req, res) {
-							res.render("certificate", { name: data });
+							res.render("certificate", { name: data,z:d });
 						});
 
 					}
@@ -76,6 +78,11 @@ app.post('/logincheck', function (req, res, next) {
 
 	});
 });
+
+module.exports = {
+    FOO: FOO
+};
+
 
 app.get('/login', function (req, res) {
 	res.render('login');
