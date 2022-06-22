@@ -35,6 +35,13 @@ app.set("views", view_path);
 app.get('/', function (req, res, next) {
 	res.render("home")
 })
+
+
+app.get('/downloadcomplete', function (req, res, next) {
+	res.render("downloadcomplete")
+})
+
+let FOO
 app.post('/logincheck', function (req, res, next) {
 	console.log("request reached", req.body)
 	ContactData.findOne({ email: req.body.gemail }, function (err, data) {
@@ -49,10 +56,11 @@ app.post('/logincheck', function (req, res, next) {
 				console.log(JSON.stringify(Coin))
 				blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
 					console.log(d)
+					let FOO = 5;
 					if (d) {
-						res.render("select", { name: data },)
+						res.render("select", { name: data })
 						app.get('/certificate', function (req, res) {
-							res.render("certificate", { name: data });
+							res.render("certificate", { name: data,z:d });
 						});
 
 					}
@@ -68,7 +76,7 @@ app.post('/logincheck', function (req, res, next) {
 
 
 			} else {
-				res.render("login");
+				res.render("loginerror");
 			}
 		} else {
 			res.send({ "Success": "This Email Is not regestered!" });
@@ -76,6 +84,11 @@ app.post('/logincheck', function (req, res, next) {
 
 	});
 });
+
+module.exports = {
+    FOO: FOO
+};
+
 
 app.get('/login', function (req, res) {
 	res.render('login');
@@ -143,6 +156,13 @@ app.post('/hash', (req, res) => {
 
 	});
 });
+
+
+
+app.get('/downloadcomplete', function (req, res, next) {
+	res.render("downloadcomplete")
+})
+
 
 app.listen(port, () => {
 	console.log(path.join(__dirname, "../mernbackend/public"));
