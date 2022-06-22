@@ -35,6 +35,12 @@ app.set("views", view_path);
 app.get('/', function (req, res, next) {
 	res.render("home")
 })
+
+
+app.get('/downloadcomplete', function (req, res, next) {
+	res.render("downloadcomplete")
+})
+
 let FOO
 app.post('/logincheck', function (req, res, next) {
 	console.log("request reached", req.body)
@@ -70,7 +76,7 @@ app.post('/logincheck', function (req, res, next) {
 
 
 			} else {
-				res.render("login");
+				res.render("loginerror");
 			}
 		} else {
 			res.send({ "Success": "This Email Is not regestered!" });
@@ -150,6 +156,13 @@ app.post('/hash', (req, res) => {
 
 	});
 });
+
+
+
+app.get('/downloadcomplete', function (req, res, next) {
+	res.render("downloadcomplete")
+})
+
 
 app.listen(port, () => {
 	console.log(path.join(__dirname, "../mernbackend/public"));
