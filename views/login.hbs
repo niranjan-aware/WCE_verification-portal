@@ -185,19 +185,28 @@ body {
 	<body>
 
 	
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-dark" style="color: black;">
  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">WCE</a>
+      {{!-- <a class="navbar-brand" href="#">WCE</a> --}}
+	  <body>
+		{{!-- <image src="clg logo.jpeg" width="50" height="50"> --}}
+	  </body>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <form action="/home.html">
-                <button class="btn btn-outline-success" type="submit">Home</button>
+                <button style="color: white;" class="btn btn-outline-success" type="submit">Home</button>
             </form>
+			<form>
+				<button style="margin-left: 1320px;color: white;" class="btn btn-outline-success" type="submit">Acoount</button>
+			</form>
+			{{!-- <form action="/home.html">
+                <button class="btn btn-outline-success" type="submit">LOG OUT</button>
+            </form> --}}
         </ul>
         <form class="d-flex" role="login">
           <!-- <button class="btn btn-outline-success" type="submit">Login</button> -->
