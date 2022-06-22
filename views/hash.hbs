@@ -157,6 +157,9 @@ body {
 .social-login__icon:hover {
 	transform: scale(1.5);	
 }
+.detail{
+	margin-top: 100;
+}
 		</style>
 	</head>
 	<body>
@@ -183,11 +186,12 @@ body {
     </div>
 </nav>
 <div class="container">
-    <link href="public/hash.css" rel="stylesheet" type="text/css">
+    {{!-- <link href="public/hash.css" rel="stylesheet" type="text/css"> --}}
 	<div class="screen">
 		<div class="screen__content">
 			<form action="/Verified" method="post" class="login">
 				<div class="login__field">
+					<div class="detail"><h5><b>Enter the details to verify certificate</b></h5></div>
 					<i class="login__icon fas fa-user"></i>
 					<input type="text" name="fname" class="login__input" placeholder="Enter First Name" required>
 				</div>
