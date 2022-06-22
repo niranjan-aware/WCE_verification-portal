@@ -61,30 +61,21 @@ app.post('/logincheck', function (req, res, next) {
 						res.render("select", { name: data })
 						app.get('/certificate', function (req, res) {
 							res.render("certificate", { name: data,z:d });
-							app.get('/account', function (req, res) {
-	
-								ContactData.findOne({email: req.body.gemail}, function (err, data) {
-									if(data){
-										console.log(data)
-										res.render('account',{name:data});         
-									}
-								})
-								
-							});
+							
 						});
 
 					}
 				})
-				app.get('/account', function (req, res) {
+				// app.get('/account', function (req, res) {
 	
-					ContactData.findOne({email: req.body.gemail}, function (err, data) {
-						if(data){
-							console.log(data)
-							res.render('account',{name:data});         
-						}
-					})
+				// 	ContactData.findOne({email: req.body.gemail}, function (err, data) {
+				// 		if(data){
+				// 			console.log(data)
+				// 			res.render('account',{name:data});         
+				// 		}
+				// 	})
 					
-				});
+				// });
 				// res.render("select", { name: data })
 				// app.get('/certificate', function (req, res) {
 				// 	res.render("certificate", { name: data });
@@ -171,7 +162,12 @@ app.post('/hash', (req, res) => {
 			console.log(d)
 			if (d) {
 				if (d.firstName == req.body.fname && d.currentHash == req.body.currentHash && d.adharNumber == req.body.adharNumber) {
-					res.render('Verified', { name: d });
+					ContactData.findOne({ firstName: req.body.fname }, function (err, data) {
+						if(data){
+							res.render('Verified', { name: d ,z:data});
+						}
+					})
+					
 				}
 			}
 		})

@@ -225,7 +225,17 @@ body {
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					{{!-- <input type="text" class="login__input" > --}}
-					<h5 style="font-family: serif;"> Candidate Name : {{this.name.firstName}} </h5>
+					<h5 style="font-family: serif;"> Candidate Name : {{this.name.firstName}}  {{this.z.middleName}} {{this.z.lastName}}</h5>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					{{!-- <input type="text" class="login__input" > --}}
+					<h5 style="font-family: serif;"> Candidate's Grade  : {{this.z.grade}}  </h5>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					{{!-- <input type="text" class="login__input" > --}}
+					<h5 style="font-family: serif;"> Year Of Passing  : {{this.z.year_of_passing}}  </h5>
 				</div>
 				 <div class="login__field">
 					<i class="login__icon fas fa-user"></i>
