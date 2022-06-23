@@ -26,12 +26,7 @@ PROJECT EXPLANTION==>
 ![Screenshot (197)](https://user-images.githubusercontent.com/97494228/175120424-358f6e91-f4c7-4539-9bef-c9355ec6874e.png)
     
    Now he will get that wchich certificates clg have on databse for him he choose certificate
-                img==>
-
-
-
-                                ![Screenshot (198)](https://user-images.githubusercontent.com/97494228/175120670-c7a7c5cb-08d2-43e8-a481-409a5919ca9f.png)
-  
+                img==>.       ![Screenshot (198)](https://user-images.githubusercontent.com/97494228/175120670-c7a7c5cb-08d2-43e8-a481-409a5919ca9f.png)
   As he choose the certificate
   *****HE WILL GET THE CERTIFICATE WHICH IS PROVIDED WITH UINIQUE $$ HASH ID $$ THIS HASH ID IS GENERATE ON THE TIME OF CERTIFICATE GENERATION ON PORTAL <THIS IS FOR     EACH TYPE OF CERTIFICATE
   ***IT MEANS THAT FOR THE USER 1 THE HASH OF X CERTIFICATE IS ALWAYS SAME AND UNIQUE  WCHICH IS ONLY GENERATED AT THE TIME OF CERTIFICATE  GENERATION CERTIFICAT AND SAVED ON COLLEGE DATA BASE***
