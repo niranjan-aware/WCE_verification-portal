@@ -121,7 +121,7 @@ const ContactSchema = mongoose.Schema({
 By using this Schema add the clg data on database
 For further use 
 **GO TO BROWSER AND RUN IT ON LOCAL PORT 3000
-AND USE IT AS PER THE PROJECT EXPLAINTIN AND FOR THIS VIDEO IS ALSO PROVIDED
+AND USE IT AS PER THE PROJECT EXPLAINTION AND FOR THIS VIDEO IS ALSO PROVIDED
   
  ASUMMED COLLEGE DUMMY  DATABASE img==>
 
@@ -132,7 +132,7 @@ BLOCKCHAIN STORED ON DATABASE
   
 ![Screenshot (204)](https://user-images.githubusercontent.com/97494228/175123215-d9e6a947-e023-4032-9bac-70a4da23cfe4.png)
 
-  ***TIP:if anything goes wrong try by running again the server
+  ***TIP:if anything goes wrong try by running  the server again
 
 
 
