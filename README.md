@@ -16,10 +16,7 @@ WCE hackathon 22
 PROJECT EXPLANTION==>
     Student will come  on wce verification portal and chose the first option to ***ISUUE VERIFIED DOCUMENTS***
                  img==>
-
-
-
-                              ![Screenshot (196)](https://user-images.githubusercontent.com/97494228/175197888-4bd58523-fe36-407d-a8dd-65cadfb1b319.png)
+![Screenshot (200)](https://user-images.githubusercontent.com/97494228/175197982-3399adb5-6efa-4378-8746-5299febe82a9.png)
 
     
    After that he will login ===>***UNIQUE IS HERE ADHAAR ID***
