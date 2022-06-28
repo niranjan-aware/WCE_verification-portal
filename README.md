@@ -58,8 +58,7 @@ PROJECT EXPLANTION==>
                
 This is the website which provides the verified certificates and feater of validation of certificates
 to run the project first clone the repo and navigate to the directory of src in main project 
-navigate to directory=\main\src\index.js
-Run this index.js with nodemon 
+TO RUN= run npm start
 For the connection in database make the mongo server running on your local machine to connect with the clg data base
 add clg dummy data 
 Schema for clg data base=
