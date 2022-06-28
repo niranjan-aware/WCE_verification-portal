@@ -9,7 +9,7 @@ const { Block } = require('../blockchain/createBlockchain')
 // require('./db/mongoose')
 // require('../clgDataMogo/mongoose')
 require('../clgDataMogo/mongoose')
-// const dataRouter = require('./routes/userSignIn')
+const dataRouter = require('./routes/userSignIn')
 // const loginValidationRouter=require('./routes/userLoginRoute')
 // const loginValidationRouter=require('./routes/checkUserLogin')
 // const userDetailRoute=require('./routes/userLoginRoute')
@@ -55,31 +55,17 @@ app.post('/logincheck', function (req, res, next) {
 				Coin.addBlock(new Block("", data.firstName, data.adharNumber))
 				console.log(JSON.stringify(Coin))
 				blockChainSchema.findOne({ firstName: req.body.fname }, function (err, d) {
-                  
+					console.log(d)
 					let FOO = 5;
 					if (d) {
-						console.log(d)
-						console.log(data)
 						res.render("select", { name: data })
 						app.get('/certificate', function (req, res) {
-							console.log(data)
-							res.render("certificate", { name: data, z: d });
-
+							res.render("certificate", { name: data,z:d });
 						});
 
 					}
-					
 				})
-				// app.get('/account', function (req, res) {
 
-				// 	ContactData.findOne({email: req.body.gemail}, function (err, data) {
-				// 		if(data){
-				// 			console.log(data)
-				// 			res.render('account',{name:data});         
-				// 		}
-				// 	})
-
-				// });
 				// res.render("select", { name: data })
 				// app.get('/certificate', function (req, res) {
 				// 	res.render("certificate", { name: data });
@@ -97,13 +83,10 @@ app.post('/logincheck', function (req, res, next) {
 		}
 
 	});
-
-
-
 });
 
 module.exports = {
-	FOO: FOO
+    FOO: FOO
 };
 
 
@@ -119,9 +102,9 @@ app.get('/login', function (req, res) {
 
 
 
-
-
-
+// app.get('/hash', function (req, res) {
+// 	res.render('hash');
+// });
 
 
 // app.get('/Verified', function (req, res) {
@@ -166,12 +149,7 @@ app.post('/hash', (req, res) => {
 			console.log(d)
 			if (d) {
 				if (d.firstName == req.body.fname && d.currentHash == req.body.currentHash && d.adharNumber == req.body.adharNumber) {
-					ContactData.findOne({ firstName: req.body.fname }, function (err, data) {
-						if (data) {
-							res.render('Verified', { name: d, z: data });
-						}
-					})
-
+					res.render('Verified', { name: d });
 				}
 			}
 		})
